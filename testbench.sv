@@ -158,7 +158,7 @@ module cache(output[31:0] cache_hits, input[14:0] A1, output[14:0] A2, inout[15:
         tD2 = D2;
         tC2 = C2;
         if (C1 != 0) begin
-            // $display("C1: %d tag: %d set: %d offset: %d A1: %d", mC1, tag, set, offset, A1);
+            $display("C1: %d tag: %d set: %d offset: %d A1: %d", mC1, tag, set, offset, A1);
             mC1 = C1;
             tag = A1[14:5];
             set = A1[4:0];
@@ -166,9 +166,6 @@ module cache(output[31:0] cache_hits, input[14:0] A1, output[14:0] A2, inout[15:
             for (i = 0; i < 4; i += 1) begin
                 @(posedge clk);
                 offset = A1[3:0];
-            end
-            if (mC1 == 7) begin
-                $display("C1: %d tag: %d set: %d offset: %d", mC1, tag, set, offset);
             end
             tC1 = 0;
             read = 0;
